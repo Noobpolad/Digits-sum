@@ -1,0 +1,56 @@
+#include <iostream>
+
+using namespace std;
+
+void digitSum();
+
+int main()
+{
+    digitSum();
+    return 0;
+}
+
+void digitSum(){
+
+        long userInput;
+        long userInputCopy;
+        int noOfDigits = 0;
+        int sum=0;
+
+        cout << "Put the number:";
+        cin >> userInput;
+
+        userInputCopy = userInput;
+
+        //Number of digits calculation
+
+        do{
+            userInput = userInput / 10;
+            noOfDigits ++;
+        }while(userInput > 0);
+
+        int numberDigit[noOfDigits];
+
+        //Putting the digits into array
+
+        for(int a = 0; a < noOfDigits; a++){
+            numberDigit[a] = userInputCopy % 10;
+            userInputCopy = userInputCopy / 10;
+        }
+
+        cout << "Number's digits and sum: ";
+
+        //Showing all digits and Sum calculation
+
+        for(int b = noOfDigits - 1; b >= 0; b--){
+            if(b>0){
+            cout << numberDigit[b] << "+";
+            }
+            else{
+             cout << numberDigit[b] << "=";
+            }
+            sum = sum + numberDigit[b];
+        }
+
+        cout << sum;
+}
